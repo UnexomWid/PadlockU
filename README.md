@@ -6,7 +6,7 @@ PadlockU is an encryption application written in C# that uses the AES-256 algori
 
 # License
 
-PadlockU is a project by [UnexomWid](http://unexomwid.github.io). The latest version was released on 16/01/2019. It is licensed under the [General Public License (GPL) version 3](https://www.gnu.org/licenses/gpl-3.0.en.html).
+PadlockU is a project by [UnexomWid](http://unexomwid.github.io). The latest version is *1.4*. It is licensed under the [General Public License (GPL) version 3](https://www.gnu.org/licenses/gpl-3.0.en.html).
 
 # Usage
 
