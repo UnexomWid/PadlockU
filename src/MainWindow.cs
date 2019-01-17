@@ -143,9 +143,8 @@ namespace PadlockU
                     ChangeControlStatus(false);
                     if (FileRadio.Checked)
                     {
-                        Progress.Value = 0;
-                        Progress.Maximum = 2;
-                        Progress.Refresh();
+                        ChangeProgress(0);
+                        ChangeProgressMaximum(2);
 
                         ChangeStatus("Preparing cipher...");
 
@@ -254,15 +253,22 @@ namespace PadlockU
 
         private string PrepareKey()
         {
-            if (Strength.SelectedItem.Equals("Weak"))
+            string selectedStrength = "";
+            string key = "";
+            Invoke(new Action(() => {
+                selectedStrength = Strength.SelectedItem as string;
+                key = Key.Text;
+            }));
+
+            if (selectedStrength.Equals("Weak"))
                 return Key.Text;
-            if (Strength.SelectedItem.Equals("Normal") || Strength.SelectedItem.Equals("Default"))
-                return Helper.GetSHA1(Encoding.UTF8.GetBytes(Key.Text));
-            if (Strength.SelectedItem.Equals("Tough"))
-                return Helper.GetSHA256(Encoding.UTF8.GetBytes(Key.Text));
-            if (Strength.SelectedItem.Equals("Very Tough"))
-                return Helper.GetSHA384(Encoding.UTF8.GetBytes(Key.Text));
-            return Helper.GetSHA512(Encoding.UTF8.GetBytes(Key.Text));
+            if (selectedStrength.Equals("Normal") || selectedStrength.Equals("Default"))
+                return Helper.GetSHA1(Encoding.UTF8.GetBytes(key));
+            if (selectedStrength.Equals("Tough"))
+                return Helper.GetSHA256(Encoding.UTF8.GetBytes(key));
+            if (selectedStrength.Equals("Very Tough"))
+                return Helper.GetSHA384(Encoding.UTF8.GetBytes(key));
+            return Helper.GetSHA512(Encoding.UTF8.GetBytes(key));
         }
 
         private void PrepareCipher()
@@ -276,42 +282,57 @@ namespace PadlockU
 
         private void ChangeControlStatus(bool status)
         {
-            InputGroup.Enabled = status;
-            ModeGroup.Enabled = status;
-            KeyGroup.Enabled = status;
-            StrengthGroup.Enabled = status;
-            StartButton.Enabled = status;
-            StartButton.Text = status ? "Start" : "Working";
+            Invoke(new Action(() =>
+            {
+                InputGroup.Enabled = status;
+                ModeGroup.Enabled = status;
+                KeyGroup.Enabled = status;
+                StrengthGroup.Enabled = status;
+                StartButton.Enabled = status;
+                StartButton.Text = status ? "Start" : "Working";
 
-            InputGroup.Refresh();
-            ModeGroup.Refresh();
-            KeyGroup.Refresh();
-            StrengthGroup.Refresh();
-            StartButton.Refresh();
+                InputGroup.Refresh();
+                ModeGroup.Refresh();
+                KeyGroup.Refresh();
+                StrengthGroup.Refresh();
+                StartButton.Refresh();
+            }));
         }
 
         private void ChangeStatus(string status)
         {
-            Status.Text = status;
-            Status.Refresh();
+            Invoke(new Action(() =>
+            {
+                Status.Text = status;
+                Status.Refresh();
+            }));
         }
 
         private void ChangeProgress(int progress)
         {
-            Progress.Value = progress;
-            Progress.Refresh();
+            Invoke(new Action(() =>
+            {
+                Progress.Value = progress;
+                Progress.Refresh();
+            }));
         }
 
         private void ChangeProgressMaximum(int max)
         {
-            Progress.Maximum = max;
-            Progress.Refresh();
+            Invoke(new Action(() =>
+            {
+                Progress.Maximum = max;
+                Progress.Refresh();
+            }));
         }
 
         private void IncrementProgress()
         {
-            ++Progress.Value;
-            Progress.Refresh();
+            Invoke(new Action(() =>
+            {
+                ++Progress.Value;
+                Progress.Refresh();
+            }));
         }
 
         #endregion
