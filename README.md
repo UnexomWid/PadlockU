@@ -2,7 +2,7 @@
 
 PadlockU is an encryption application written in C# that uses the AES-256 algorithm.
 
-![UI](UI.PNG)
+![UI](img/ui.png)
 
 # License
 
