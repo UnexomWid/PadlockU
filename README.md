@@ -12,7 +12,7 @@ PadlockU is a project by [UnexomWid](http://unexomwid.github.io). It is licensed
 
 >Note: versions with the prefix **R** are considered stable releases, while those with the prefix **D** are considered unstable.
 
-[1.4R](https://github.com/UnexomWid/PadlockU/releases/tag/v1.4R) - January 17, 2019
+[v1.4R](https://github.com/UnexomWid/PadlockU/releases/tag/v1.4R) - January 19, 2019
 
 # Usage
 
