@@ -222,8 +222,8 @@ namespace PadlockU
             {
                 bool doDec = true;
 
-                Progress.Value++;
-                Progress.Refresh();
+                IncrementProgress();
+
                 ChangeStatus("Working on " + Helper.SafeFileName(fPath) + "...");
 
                 if (!(fPath.Substring(fPath.Length - 4, 4).ToLower().Equals(".pad")))
